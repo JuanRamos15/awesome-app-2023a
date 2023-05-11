@@ -8,7 +8,24 @@ const app = express();//(req,res)=>{codigo}
 //Registrar nuestro primer middleware
 app.use((req,res,next)=>{
  console.log("Middleware 1 funcionando🚈");
+ //envocando al siguinte middleware
+ next();
 });
+//se crea el middleware 2
+app.use((req,resp,next)=>{
+ console.log("El  middleware 2 funcionando🚌");
+ console.log(`${req.method}-${req.url}`);
+ next();
+});
+//middleware de respuesta
+app.use((req,res)=>{
+    console.log("El repuesta de middleware al cliente");
+    res.send(`
+    <h1> Bienvenido a express</h1>
+    <p>Esta es mi app asombrosa</p>
+    
+    `);
+   });
 //crear el servidor
 const server = http.createServer(app);
 //Definir puertos
