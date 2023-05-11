@@ -2,8 +2,13 @@
 import http from 'http';
 //importar express(se le puede cambiar el nombre)
 import express from 'express';
+import { Console } from 'console';
 //crear instancia de express
 const app = express();//(req,res)=>{codigo}
+//Registrar nuestro primer middleware
+app.use((req,res,next)=>{
+ console.log("Middleware 1 funcionando🚈");
+});
 //crear el servidor
 const server = http.createServer(app);
 //Definir puertos
