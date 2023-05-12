@@ -16,7 +16,15 @@ app.use((req,resp,next)=>{
  console.log(`${req.method}-${req.url}`);
  next();
 });
-//middleware de respuesta
+///middleware de proposito especifico//about
+app.use(`/about`,(req,res)=>{
+    res.send(`
+    <h1 style="color: teal" >About</h1>
+    <p> Esta pagina es creada para aprender 
+    desarollo fullstack en javascript</p>
+    `)
+});
+//middleware de respuesta(middleware final)
 app.use((req,res)=>{
     console.log("El repuesta de middleware al cliente");
     res.send(`
