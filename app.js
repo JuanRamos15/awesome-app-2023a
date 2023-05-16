@@ -27,10 +27,8 @@ app.use(`/about`,(req,res)=>{
     `)
 });
 //GET /add-product(middleware)
-app.use(`/add-product`,(req,res,next)=>{
+app.get(`/add-product`,(req,res,next)=>{
     console.log("Sirve el formulario 👍");
-    if(req.method==="POST") return next();
-
  //siviendo al formulario
  res.send(`
   <form action="/add-product" method="POST">
@@ -43,7 +41,7 @@ app.use(`/add-product`,(req,res,next)=>{
  `);
 });
 //POST /add-product
-app.use(`/add-product`,(req,res)=>{
+app.post(`/add-product`,(req,res)=>{
  //Realizando una extraccion de los datos de la peticion
  for(const prop in req.body)
  {
