@@ -34,7 +34,7 @@ app.get(`/add-product`,(req,res,next)=>{
   <form action="/add-product" method="POST">
   <label for="title">Title</label>
   <input id="title" type="text"name="title">
-  <label for="description">Description<label>
+  <label for="description">Description</label>
   <input id="description" type="text" name="description">
   <button type="submit">Add product</button>
   </form>
