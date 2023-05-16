@@ -4,6 +4,8 @@
 import express from 'express';
 //crear instancia de express
 const app = express();//(req,res)=>{codigo}
+//Middleware de parseo de datos del cliente
+app.use(express.urlencoded({extended:true}));
 //Registrar nuestro primer middleware
 app.use((req,res,next)=>{
  console.log("Middleware 1 funcionando🚈");
@@ -25,20 +27,27 @@ app.use(`/about`,(req,res)=>{
     `)
 });
 //GET /add-product(middleware)
-app.use(`/add-product`,(req,res)=>{
+app.use(`/add-product`,(req,res,next)=>{
+    console.log("Sirve el formulario 👍");
+    if(req.method==="POST") return next();
+
  //siviendo al formulario
  res.send(`
-  <form action="/add-product" method="POST"></form>
-  <input type="text" name="title">
+  <form action="/add-product" method="POST">
+  <label for="title">Title</label>
+  <input id="title" type="text"name="title">
+  <label for="description">Description<label>
+  <input id="description" type="text" name="description">
   <button type="submit">Add product</button>
+  </form>
  `);
 });
 //POST /add-product
 app.use(`/add-product`,(req,res)=>{
  //Realizando una extraccion de los datos de la peticion
- for(const prop in req)
+ for(const prop in req.body)
  {
-    console.log(`PROP:${prop}`);
+    console.log(`${prop}:${req.body[prop]}`);
  }
  //Rediccionamiento
   res.redirect(`/`);
