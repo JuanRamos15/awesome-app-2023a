@@ -24,6 +24,25 @@ app.use(`/about`,(req,res)=>{
     desarollo fullstack en javascript</p>
     `)
 });
+//GET /add-product(middleware)
+app.use(`/add-product`,(req,res)=>{
+ //siviendo al formulario
+ res.send(`
+  <form action="/add-product" method="POST"></form>
+  <input type="text" name="title">
+  <button type="submit">Add product</button>
+ `);
+});
+//POST /add-product
+app.use(`/add-product`,(req,res)=>{
+ //Realizando una extraccion de los datos de la peticion
+ for(const prop in req)
+ {
+    console.log(`PROP:${prop}`);
+ }
+ //Rediccionamiento
+  res.redirect(`/`);
+}); 
 //middleware de respuesta(middleware final)
 app.use((req,res)=>{
     console.log("El repuesta de middleware al cliente");
