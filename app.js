@@ -71,7 +71,7 @@ app.use((req,res)=>{
 //Definir puertos
 const port = 3000;
 const ip = "0.0.0.0";
-// Arrancar el servidor
+// Arrancar el servidor(creacion)
 app.listen(port, ip, () => {
  console.log("servidor trabajando 💼 en : http://localhost:3000");
  //console.log(`servidor trabajando 💼 en : http://${process.env.IP}:${process.env.PORT}:3000`);
