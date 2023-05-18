@@ -1,11 +1,18 @@
-//importar el modulo http 
-//import http from 'http';
 //importar express(se le puede cambiar el nombre)
 import express from 'express';
-//crear instancia de express
+// Importando el enrutador
+import adminRouter from './routes/admin.routes.js';
+import shopRouter from './routes/shop.routes.js';
+// Creando la instancia de express
+// que basicamente es un middleware
 const app = express();//(req,res)=>{codigo}
-//Middleware de parseo de datos del cliente
-app.use(express.urlencoded({extended:true}));
+// Se registra el middleware del body-parser///Middleware de parseo de datos del cliente
+app.use(express.urlencoded({ extended: true }));
+// Se agrega ruta de administrador
+app.use(adminRouter);
+// Se agrega ruta shop
+app.use(shopRouter);
+// Creando una instancia del enrutador de express
 //Registrar nuestro primer middleware
 app.use((req,res,next)=>{
  console.log("Middleware 1 funcionando🚈");
@@ -34,7 +41,7 @@ app.get(`/add-product`,(req,res,next)=>{
   <form action="/add-product" method="POST">
   <label for="title">Title</label>
   <input id="title" type="text"name="title">
-  <label for="description">Description</label>
+  <label for="description">Description<label>
   <input id="description" type="text" name="description">
   <button type="submit">Add product</button>
   </form>
@@ -65,7 +72,7 @@ app.use((req,res)=>{
 const port = 3000;
 const ip = "0.0.0.0";
 // Arrancar el servidor
-app.listen(port, ip, (err) => {
+app.listen(port, ip, () => {
  console.log("servidor trabajando 💼 en : http://localhost:3000");
- console.log(`servidor trabajando 💼 en : http://${process.env.IP}:${process.env.PORT}:3000`);
+ //console.log(`servidor trabajando 💼 en : http://${process.env.IP}:${process.env.PORT}:3000`);
 });
