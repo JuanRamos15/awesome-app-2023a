@@ -7,7 +7,6 @@ import path from 'path';
 // GET /add-product
 router.use('', (req, res) => {
  // Servimos el formulario
- console.log("📢 Sirviendo formulario...");
  res.sendFile(path.resolve('views','not-found.html'));
   });
 export default router;
