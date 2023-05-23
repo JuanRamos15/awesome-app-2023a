@@ -4,7 +4,6 @@ import httpStatus from 'http-status';
 // Creando una instancia del enrutador de express
 const router = Router();
 import path from 'path';
-// GET /add-product
 router.use('', (req, res) => {
  // Servimos el formulario
  res.sendFile(path.resolve('views','not-found.html'));

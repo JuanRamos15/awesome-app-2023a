@@ -3,7 +3,7 @@ import { Router } from 'express';
 // Creando una instancia del enrutador de express
 const router = Router();
 import path from 'path';
-// GET /add-product
+// GET /admin/add-product
 router.get('/add-product', (req, res, next) => {
   // Si la petición es post pasamos el siguiente
   // Middleware
