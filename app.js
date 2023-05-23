@@ -1,8 +1,11 @@
 //importar express(se le puede cambiar el nombre)
 import express from 'express';
+//importando http-status
+import httpStatus from 'http-status';
 // Importando el enrutador
 import adminRouter from './routes/admin.routes.js';
 import shopRouter from './routes/shop.routes.js';
+import error404 from './routes/notFoundRoutes.js';
 // Creando la instancia de express
 // que basicamente es un middleware
 const app = express();//(req,res)=>{codigo}
@@ -12,6 +15,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(adminRouter);
 // Se agrega ruta shop
 app.use(shopRouter);
+//registrando middleware para el error 404
+app.use(error404);
 // Creando una instancia del enrutador de express
 //Registrar nuestro primer middleware
 app.use((req,res,next)=>{
