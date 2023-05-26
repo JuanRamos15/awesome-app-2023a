@@ -8,7 +8,7 @@ import adminRouter from './routes/admin.routes.js';
 import shopRouter from './routes/shop.routes.js';
 import error404 from './routes/notFoundRoutes.js';
 //importando root dir
-import { ROOT_DIR } from './routes/helpers/paths.js';
+import { ROOT_DIR } from './helpers/paths.js';
 // Creando la instancia de express
 // que basicamente es un middleware
 const app = express();//(req,res)=>{codigo}
