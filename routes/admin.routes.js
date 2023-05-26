@@ -4,7 +4,7 @@ import { Router } from 'express';
 const router = Router();
 import path from 'path';
 //importando ROOT_DIR
-import { ROOT_DIR } from './helpers/paths.js';
+import { ROOT_DIR } from '../helpers/paths.js';
 // GET /admin/add-product
 router.get('/add-product', (req, res, next) => {
   // Si la petición es post pasamos el siguiente
