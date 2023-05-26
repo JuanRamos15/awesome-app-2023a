@@ -2,13 +2,15 @@
 import { Router } from 'express';
 // Creando una instancia del enrutador de express
 const router = Router();
+// Importando productos
+import { products } from './admin.routes.js';
 //importandi enrutador
 import path from 'path';
-
 // GET ///middleware de respuesta(middleware final)
 router.get('/', (req, res)=>{
+  // Mostrando productos en memoria
+  console.log(products);
   console.log("📢 Sirviendo la ruta '/'");
-  // Se contesta al server
   res.sendFile(path.resolve('views','shop.html'));
 });
 // GET /about///middleware de proposito especifico//about
