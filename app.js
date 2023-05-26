@@ -2,15 +2,21 @@
 import express from 'express';
 //importando http-status
 import httpStatus from 'http-status';
+import path from 'path';
 // Importando el enrutador
 import adminRouter from './routes/admin.routes.js';
 import shopRouter from './routes/shop.routes.js';
 import error404 from './routes/notFoundRoutes.js';
+//importando root dir
+import { ROOT_DIR } from './helpers/paths.js';
 // Creando la instancia de express
 // que basicamente es un middleware
 const app = express();//(req,res)=>{codigo}
 // Se registra el middleware del body-parser///Middleware de parseo de datos del cliente
 app.use(express.urlencoded({ extended: true }));
+//se regsitra el middleware para el servidor de archivos estaticos
+app.use(express.static(path.join(ROOT_DIR,'public')));
+
 // Se agrega ruta de administrador
 app.use('/admin',adminRouter);
 // Se agrega ruta shop
