@@ -15,7 +15,10 @@ router.get('/add-product', (req, res, next) => {
   // Servimos el formulario
   console.log("📢 Sirviendo formulario...");
   console.log(`ROOT_DIR:${ROOT_DIR}`);
-  res.render('add-product', {addProduct: `active`});
+  res.render('add-product',{
+    addProduct: `active`, 
+    viewStyle: '/CSS/product.css',
+    docTitle:"Add Product"});
 });
 // POST /add-product
 router.post('/add-product', (req, res) => {
