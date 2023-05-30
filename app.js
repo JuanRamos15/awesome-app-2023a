@@ -2,6 +2,8 @@
 import express from 'express';
 //importando http-status
 import httpStatus from 'http-status';
+// Template Engine
+import { engine } from 'express-handlebars';
 import path from 'path';
 // Importando el enrutador
 import adminRouter from './routes/admin.routes.js';
@@ -12,6 +14,21 @@ import { ROOT_DIR } from './helpers/paths.js';
 // Creando la instancia de express
 // que basicamente es un middleware
 const app = express();//(req,res)=>{codigo}
+const hbsTemplateEngine = engine({
+    // Extensión de los archivos de plantillas
+    extname: '.hbs',
+    // Nombre del diseño por defecto
+    defaultLayout: 'main',
+  });
+  // TE1. Se registra en la instancia de express
+app.engine('hbs', hbsTemplateEngine);
+
+// TE2.Se selecciona el Template Engine
+app.set('view engine', 'hbs');
+
+// TE3. Se establece la ruta de las vistas
+app.set('views', path.resolve('views'));
+
 // Se registra el middleware del body-parser///Middleware de parseo de datos del cliente
 app.use(express.urlencoded({ extended: true }));
 //se regsitra el middleware para el servidor de archivos estaticos

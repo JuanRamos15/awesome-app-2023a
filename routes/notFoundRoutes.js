@@ -6,7 +6,7 @@ const router = Router();
 import path from 'path';
 router.use('', (req, res) => {
  // Servimos el formulario
- res.sendFile(path.resolve('views','not-found.html'));
+ res.render('not-found');
   });
 export default router;
 
